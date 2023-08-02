@@ -33,3 +33,13 @@ export const store = configureStore({
     todos: todoSlice.reducer,
   },
 });
+
+export interface Todo {
+  id: number;
+  name: string;
+  isCompleted: boolean;
+}
+
+export interface RootState {
+  todos: Todo[];
+}

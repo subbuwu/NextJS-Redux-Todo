@@ -2,11 +2,11 @@
 import Image from 'next/image'
 import {useState} from 'react'
 import {useSelector,useDispatch} from "react-redux"
-import { addTodo , deleteTodo , tickTodo} from './redux/store';
+import { RootState, addTodo , deleteTodo , tickTodo} from './redux/store';
 
 export default function Home() {
   const [input,setInput] = useState("");
-  const todoList = useSelector((state)=>state.todos)
+  const todoList = useSelector((state: RootState) => state.todos);
   const dispatch = useDispatch();
 
   const handleAddTodo = () => {
@@ -38,7 +38,7 @@ export default function Home() {
               <button  onClick={handleAddTodo} className='bg-green-500 text-black rounded-lg p-1 text-lg hover:bg-green-400 transition all 0.3s ease-in-out'>Add Todo</button>
             </div>
           </div>
-          <div className='w-[40%] h-[50%] mx-auto p-5 rounded-xl bg-orange-200 text-black font-medium max-lg:w-[90%] h-auto'>
+          <div className='w-[40%] mx-auto p-5 rounded-xl bg-orange-200 text-black font-medium max-lg:w-[90%] h-auto'>
           {
         todoList.map((todo) => (
           todo.isCompleted ? (
